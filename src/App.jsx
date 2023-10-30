@@ -11,6 +11,7 @@ export default function App() {
     const [yItem,setYItem] = useState("");
     const [zItem,setZItem] = useState("");
     const [ukus,setUkus] = useState("us");
+    const [customName,setCustomName] = useState("");
 
     const generateRandomStory = () => {
         const xItems = ["Willy the Goblin","Big Daddy","Father Chistmas"];
@@ -34,7 +35,7 @@ export default function App() {
       <>
         <div>
           <label htmlFor="customname">Enter custom name:</label>
-          <input type="text" placeholder="" />
+          <input type="text" placeholder="" onChange={(e) => setCustomName(e.target.value)} />
         </div>
         <div>
           <label htmlFor="us">US</label>
@@ -47,10 +48,10 @@ export default function App() {
         </div>
         {showStory && (
           <p>
-            It was 94 {ukus === "uk" ? "Celsius":"Fahrenheit"} outside, so {xItem} went for a walk. When they
+            It was {ukus === "uk" ? "34 Celsius":"94 Fahrenheit"} outside, so {customName || "Bob"} went for a walk. When they
             got to {yItem}, they stared in horror for a few moments, then {zItem}.
-            Bob saw the whole thing, but was not surprised — {xItem} weighs 300 
-            {ukus === "uk" ? "stone":"pounds"}, and it was a hot day.
+            Bob saw the whole thing, but was not surprised — {customName || "Bob"} weighs
+            {ukus === "uk" ? " 21 stone":" 300 pounds"}, and it was a hot day.
           </p>
         )}
       </>
